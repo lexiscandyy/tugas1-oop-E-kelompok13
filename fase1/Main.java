@@ -2,17 +2,22 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
+    public static int cur = 0;
+
     public static void main(String[] arg){
         String[] listMenu = {
-                "admin panel\n\n1. Masuk\n2. Exit\n",
+                "admin panel\n\n1. Masuk\n" +
+                "2. Exit\n",
 
                 "Pilih menu\n1. List kamar dan fasilitas\n" +
-                        "2. Tambah data penghuni\n" +
-                        "3. Riwayat Catatan Pembayaran\n" +
-                        "4. Kembali\n",
+                "2. Tambah data penghuni\n" +
+                "3. Riwayat Catatan Pembayaran\n" +
+                "4. Kembali\n",
 
+                "1. Edit\n" +
+                "2. Kembali\n",
         };
-        int cur = 0;
+
         while (true) {
             System.out.println(listMenu[cur]);
             int input = new Utils().ScanInt();
@@ -25,6 +30,9 @@ public class Main{
                 if(input == 1) listKamar();
                 if(input == 2) tambahPenghuni();
                 if(input == 3) riwayatCatatanPembayaran();
+            }else if(cur == 2){
+                if(input == 2) cur--;
+                if(input == 1) editKamar();
             }
         }
     }
@@ -36,11 +44,11 @@ public class Main{
                 "1. Kamar 1, fasilitas .. .......\n" +
                 "1. Kamar 1, fasilitas .. .......\n" +
                 "1. Kamar 1, fasilitas .. .......\n");
-        while(true){
-            System.out.println("Ketik 1 untuk lanjut");
-            int input = new Utils().ScanInt();
-            if(input == 1) return;
-        }
+        cur++;
+    }
+
+    public static void editKamar(){
+
     }
 
     public static void tambahPenghuni(){

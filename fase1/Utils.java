@@ -12,8 +12,8 @@ public class Utils{
         return Integer.parseInt(str);
     }
 
-    public String ScanString(){
+    public String ScanString(int lenLimit){
         String str = sc.next();
-        return str;
+        return (str.length() > lenLimit ? null : str);
     }
 }
