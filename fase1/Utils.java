@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class InputNumber{
-    public int Scan(){
-        Scanner sc = new Scanner(System.in);
+public class Utils{
+    static Scanner sc = new Scanner(System.in);
+    public int ScanInt(){
         String str = sc.next();
         boolean ok = true;
 
@@ -13,13 +13,13 @@ public class InputNumber{
             }
         }
 
-        if(str.length() > 10){
-            return -1;
-        }
-        if(ok){
-            return Integer.parseInt(str);
-        }
+        if(str.length() > 10) return -1;
+        if(ok) return Integer.parseInt(str);
         return -1;
     }
 
+    public String ScanString(){
+        String str = sc.next();
+        return str;
+    }
 }
