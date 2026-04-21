@@ -7,17 +7,29 @@ public class Main{
 
     public static void main(String[] arg){
         String[] listMenu = {
-                "admin panel\n\n1. Masuk\n" +
-                "2. Exit\n",
+                "╔══════════════════════════════════════╗\n" +
+                "║          SISTEM KOST ADMIN           ║\n" +
+                "╠══════════════════════════════════════╣\n" +
+                "║  1. Masuk                            ║\n" +
+                "║  2. Exit                             ║\n" +
+                "╚══════════════════════════════════════╝",
 
-                "Pilih menu\n1. List kamar dan fasilitas\n" +
-                "2. Tambah data penghuni\n" +
-                "3. Riwayat Catatan Pembayaran\n" +
-                "4. Kembali\n",
+                "╔══════════════════════════════════════╗\n" +
+                "║              MENU UTAMA              ║\n" +
+                "╠══════════════════════════════════════╣\n" +
+                "║ 1. List kamar & fasilitas            ║\n" +
+                "║ 2. Tambah data penghuni              ║\n" +
+                "║ 3. Riwayat pembayaran                ║\n" +
+                "║ 4. Kembali                           ║\n" +
+                "╚══════════════════════════════════════╝",
 
-                "1. Edit\n" +
-                "2. Tambah Kamar\n" +
-                "3. Kembali\n",
+                "╔══════════════════════════════════════╗\n" +
+                "║           MANAJEMEN KAMAR            ║\n" +
+                "╠══════════════════════════════════════╣\n" +
+                "║ 1. Edit kamar                        ║\n" +
+                "║ 2. Tambah kamar                      ║\n" +
+                "║ 3. Kembali                           ║\n" +
+                "╚══════════════════════════════════════╝",
         };
 
         while (true) {
