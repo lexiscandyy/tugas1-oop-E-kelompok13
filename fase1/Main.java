@@ -75,7 +75,7 @@ public class Main{
 
         for(int i = 0; i < kamar.getKamar().size(); i++){
             int idx= i+1;
-            System.out.println("Kamar no-" + idx);
+            System.out.println("Kamar no. " + idx);
             System.out.println("Harga perbulan: " + listHarga.get(i) + "\nFasilitas: ");
             for(int j = 0;j < listKamar.get(i).size();j++){
                 int idx2 = j+1;
