@@ -8,6 +8,7 @@ public class Kamar {
     private static ArrayList<ArrayList<String>> listPenghuni = new ArrayList<>();
     private static ArrayList<Boolean> isTerisi = new ArrayList<>();
     private static ArrayList<String> listHarga = new ArrayList<>();
+
     NumberFormat rp = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
 
     public ArrayList<ArrayList<String>> getKamar(){
@@ -31,7 +32,7 @@ public class Kamar {
     }
 
     public Boolean removeKamar(int nomorKamar){
-        if(nomorKamar <= 0 && nomorKamar > listKamar.size()) return false;
+        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
         listKamar.remove(nomorKamar-1);
         listPenghuni.remove(nomorKamar-1);
         isTerisi.remove(nomorKamar-1);
@@ -40,7 +41,7 @@ public class Kamar {
     }
 
     public Boolean addPenghuni(int nomorKamar, String namaPenghuni){
-        if(nomorKamar <= 0 && nomorKamar > listKamar.size()) return false;
+        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
         listPenghuni.get(nomorKamar-1).add(namaPenghuni);
 
         isTerisi.set(nomorKamar-1, true);
@@ -49,7 +50,7 @@ public class Kamar {
     }
 
     public Boolean removePenghuni(int nomorKamar, int nomorPenghuni){
-        if(nomorKamar <= 0 && nomorKamar > listKamar.size()) return false;
+        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
         if(nomorPenghuni > listPenghuni.get(nomorKamar-1).size()) return false;
         listPenghuni.get(nomorKamar-1).remove(nomorPenghuni-1);
 
@@ -60,7 +61,7 @@ public class Kamar {
 
     public Boolean setHarga(int nomorKamar, String harga){
         if(harga.length() >= 9) return false;
-        if(nomorKamar <= 0 && nomorKamar > listKamar.size()) return false;
+        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
         for(int i = 0 ;i < harga.length();i++){
             if(harga.charAt(i) < '0' || harga.charAt(i) > '9') return false;
         }
@@ -69,7 +70,7 @@ public class Kamar {
     }
 
     public Boolean addFasilitas(int nomorKamar, String namaFasilitas){
-        if(nomorKamar <= 0 && nomorKamar > listKamar.size()) return false;
+        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
 
         listKamar.get(nomorKamar-1).add(namaFasilitas);
         return true;

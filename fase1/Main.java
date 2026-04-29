@@ -6,6 +6,8 @@ public class Main{
     public static int cur = 0;
     static Kamar kamar = new Kamar();
 
+    static ArrayList<Pembayaran> pembayaran = new ArrayList<>();
+
     public static void main(String[] arg){
         String[] listMenu = {
                 "╔══════════════════════════════════════╗\n" +
@@ -42,6 +44,15 @@ public class Main{
                 "║  1. Riwayat pembayaran penghuni      ║\n" +
                 "║  2. Kembali                          ║\n" +
                 "╚══════════════════════════════════════╝",
+
+                "╔══════════════════════════════════════╗\n" +
+                "║         tes                          ║\n" +
+                "╠══════════════════════════════════════╣\n" +
+                "║  1. Tampilkan riwayat pembayaran     ║\n" +
+                "║  2. Tambah riwayat pembayaran        ║\n" +
+                "║  3. Hapus riwayat pembayaran         ║\n" +
+                "║  4. Kembali                          ║\n" +
+                "╚══════════════════════════════════════╝",
         };
 
         while (true) {
@@ -64,8 +75,14 @@ public class Main{
                 if(input == 5) aturHarga();
                 if(input == 6) hapusKamar();
                 if(input == 7) hapusPenghuni();
-            }else if(cur == 3){ // manajemen pembayaran
-
+            }else if(cur == 3){
+                if(input == 2) cur-=2;
+                if(input == 1) cur++;
+            }else if(cur == 4){ // manajemen pembayaran
+                if(input == 4) cur--;
+                if(input == 1) tampilkanRiwayatPembayaran();
+                if(input == 2) tambahRiwayatPembayaran();
+                if(input == 3) hapusRiwayatPembayaran();
             }
         }
     }
@@ -160,5 +177,51 @@ public class Main{
         }else{
             System.out.printf("Sukses menghapus penghuni nomor-%d pada kamar nomor-%d\n", nomorPenghuni, nomorKamar);
         }
+    }
+
+    public static void tampilkanRiwayatPembayaran(){
+        for(Pembayaran i : pembayaran){
+            i.tampilkanData();
+        }
+    }
+
+    public static void tambahRiwayatPembayaran(){
+        System.out.print("Masukkan nomor kamar: ");
+        int nmkamar = new Utils().ScanInt();
+
+        System.out.print("Masukkan nama penghuni: ");
+        String namapenghuni = new Utils().ScanString(1000);
+
+        System.out.print("Masukkan tanggal: ");
+        int tanggal = new Utils().ScanInt();
+
+        System.out.print("Masukkan bulan (angka): ");
+        int bulan = new Utils().ScanInt();
+
+        System.out.print("Masukkan tahun: ");
+        int tahun = new Utils().ScanInt();
+
+        System.out.print("Masukkan jumlah pembayaran: ");
+        int jumlah = new Utils().ScanInt();
+
+        System.out.print("Status (LUNAS/BELUM LUNAS): ");
+        String lunas = new Utils().ScanString(100);
+
+        if(namapenghuni == null || lunas == null || nmkamar == -1 || tanggal == -1 || bulan == -1 || tahun == -1 || jumlah == -1){
+            System.out.println("input tidak valid");
+            return;
+        }
+
+        pembayaran.add(new Pembayaran(nmkamar, namapenghuni,tanggal, bulan, tahun, jumlah, lunas ));
+    }
+
+    public static  void hapusRiwayatPembayaran(){
+        System.out.print("Masukkan nomor riwayat pembayaran: ");
+        int n = new Utils().ScanInt();
+        if(n <= 0 || n+1 > pembayaran.size()){
+            System.out.println("Nomor tidak valid");
+            return;
+        }
+        pembayaran.remove(n-1);
     }
 }
