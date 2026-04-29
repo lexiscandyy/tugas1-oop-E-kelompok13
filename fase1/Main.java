@@ -46,7 +46,7 @@ public class Main{
                 "╚══════════════════════════════════════╝",
 
                 "╔══════════════════════════════════════╗\n" +
-                "║         tes                          ║\n" +
+                "║            MENU PEMBAYARAN           ║\n" +
                 "╠══════════════════════════════════════╣\n" +
                 "║  1. Tampilkan riwayat pembayaran     ║\n" +
                 "║  2. Tambah riwayat pembayaran        ║\n" +
