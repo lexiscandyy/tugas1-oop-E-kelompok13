@@ -46,7 +46,7 @@ public class Main{
                 "╚══════════════════════════════════════╝",
 
                 "╔══════════════════════════════════════╗\n" +
-                "║         tes                          ║\n" +
+                "║            MENU PEMBAYARAN           ║\n" +
                 "╠══════════════════════════════════════╣\n" +
                 "║  1. Tampilkan riwayat pembayaran     ║\n" +
                 "║  2. Tambah riwayat pembayaran        ║\n" +
@@ -55,7 +55,7 @@ public class Main{
                 "╚══════════════════════════════════════╝",
         };
 
-        while (true) {
+        while (true) { // LOOPING UTAMA MENU
             System.out.println(listMenu[cur]);
             int input = new Utils().ScanInt();
             if(cur == 0) {
@@ -214,7 +214,6 @@ public class Main{
             System.out.println("\u001B[31mInput tidak valid\u001B[0m");
             return;
         }
-
         pembayaran.add(new Pembayaran(nmkamar, namapenghuni,tanggal, bulan, tahun, jumlah, lunas ));
     }
 

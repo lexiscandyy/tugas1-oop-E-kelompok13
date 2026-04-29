@@ -1,4 +1,6 @@
 import java.text.NumberFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.Locale;
 
 public class Pembayaran {
@@ -12,16 +14,15 @@ public class Pembayaran {
     NumberFormat rp = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
     
     public Pembayaran(int kamar, String penghuni,int tanggal, int bulan, int tahun, int jumlah, String lunas){
-        if(bulan <= 0 || bulan > 12) {
-            throw new IllegalArgumentException("\u001B[33mBulan harus 1-12!\u001B[0m");
-        }
-        if(tanggal <= 0 || tanggal > 31){
-            throw new IllegalArgumentException("\u001B[33mTanggal harus antara 1-31!\u001B[0m");
+        try {
+            LocalDate.of(tahun, bulan, tanggal); // otomatis validasi
+        } catch (DateTimeException e) {
+            throw new IllegalArgumentException("Tanggal tidak valid!");
         }
         if(tahun <= 2020 || tahun > 2026){
             throw new IllegalArgumentException("\u001B[33mTahun harus antara 2021-2026\u001B[0m");
         }
-        if((lunas.equals("LUNAS") == false && lunas.equals("BELUM LUNAS") == false) || lunas == null){
+        if(lunas == null || (lunas.equals("LUNAS") == false && lunas.equals("BELUM LUNAS") == false)){
             throw new IllegalArgumentException("KETIK: LUNAS atau BELUM LUNAS");
         }
         this.kamar = kamar;
