@@ -1,1 +1,71 @@
+  while (true) {
+            System.out.println(listMenu[cur]);
+            int input = new Utils().ScanInt();
+            if(cur == 0) {
+                if (input == 2) return;
+                if (input == 1) cur++;
+                else System.out.println("input tidak valid");
+            }else if(cur == 1){
+                if(input == 3) cur--;
+                if(input == 1) cur++;
+                if(input == 2)cur+=2;
+            }else if(cur == 2){ // manajemen kamar
+                if(input == 8) cur--;
+                if(input == 1) tampilkanKamar();;
+                if(input == 2) tambahKamar();
+                if(input == 3) tambahPenghuni();
+                if(input == 4) tambahFasilitas();
+                if(input == 5) aturHarga();
+                if(input == 6) hapusKamar();
+                if(input == 7) hapusPenghuni();
+            }else if(cur == 3){ // manajemen pembayaran
+
+            }
+        }
+    }
+apakah input ini sudah aman dan bebas bug?
+
+Belum sepenuhnya aman — masih ada beberapa potensi bug pada bagian input itu.
+Masalah utamanya ada di validasi if yang berdiri sendiri (bukan else if), sehingga beberapa kondisi bisa berjalan bersamaan dan membuat alur menu tidak stabil.
+
+Masalah pada kode
+1. Menu utama (cur == 1) bisa menjalankan lebih dari satu kondisi
+Contoh:
+if(input == 3) cur--;if(input == 1) cur++;if(input == 2) cur+=2;
+Karena semuanya if terpisah, kalau terjadi perubahan nilai cur, kondisi berikutnya tetap dicek.
+Walaupun untuk angka 1,2,3 biasanya aman, ini tetap tidak ideal dan berisiko bug saat program berkembang.
+Lebih aman pakai:
+if (...) {}else if (...) {}else {}
+
+2. Tidak ada validasi input selain angka menu
+Jika user input:
+abc
+maka:
+new Utils().ScanInt();
+bisa error / crash tergantung isi class Utils.
+Artinya program belum tahan terhadap input non-angka.
+
+3. Tidak ada pesan error pada cur == 1
+Bagian ini:
+}else if(cur == 1){    if(input == 3) cur--;    if(input == 1) cur++;    if(input == 2)cur+=2;}
+Kalau user input:
+9
+program diam saja tanpa pesan.
+Harusnya ada:
+else System.out.println("input tidak valid");
+
+4. cur == 3 kosong
+Bagian ini:
+}else if(cur == 3){}
+artinya user masuk ke menu pembayaran tapi tidak bisa melakukan apa-apa → seperti program macet.
+
+5. Double semicolon
+Ini:
+if(input == 1) tampilkanKamar();;
+Ada ;;
+Memang tidak crash, tapi tidak rapi.
+
+Versi yang lebih aman
+while (true) {    System.out.println(listMenu[cur]);    int input = new Utils().ScanInt();    if (cur == 0) {        if (input == 1) {            cur++;        }         else if (input == 2) {            return;        }         else {            System.out.println("Input tidak valid");        }    } else if (cur == 1) {        if (input == 1) {            cur++;        }         else if (input == 2) {            cur += 2;        }         else if (input == 3) {            cur--;        }         else {            System.out.println("Input tidak valid");        }    } else if (cur == 2) {        if (input == 1) {            tampilkanKamar();        }         else if (input == 2) {            tambahKamar();        }         else if (input == 3) {            tambahPenghuni();        }         else if (input == 4) {            tambahFasilitas();        }         else if (input == 5) {            aturHarga();        }         else if (input == 6) {            hapusKamar();        }         else if (input == 7) {            hapusPenghuni();        }         else if (input == 8) {            cur--;        }         else {            System.out.println("Input tidak valid");        }    } else if (cur == 3) {        System.out.println("Menu pembayaran belum tersedia");        cur -= 2;    }}
+
 
