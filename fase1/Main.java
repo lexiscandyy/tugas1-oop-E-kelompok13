@@ -61,7 +61,7 @@ public class Main{
             if(cur == 0) {
                 if (input == 2) return;
                 if (input == 1) cur++;
-                else System.out.println("input tidak valid");
+                else System.out.println("\u001B[31minput tidak valid\u001B[0m");
             }else if(cur == 1){
                 if(input == 3) cur--;
                 if(input == 1) cur++;
@@ -95,21 +95,24 @@ public class Main{
 
         for(int i = 0; i < kamar.getKamar().size(); i++){
             int idx= i+1;
-            System.out.println("Kamar no. " + idx);
-            System.out.println("Harga perbulan: " + listHarga.get(i) + "\nFasilitas: ");
+            System.out.println("╔══════════════════════════════════════╗");
+            System.out.println("║ Kamar no. " + idx);
+            System.out.println("╠══════════════════════════════════════╣");
+            System.out.println(" Harga perbulan: " + listHarga.get(i) + "\n Fasilitas: ");
             for(int j = 0;j < listKamar.get(i).size();j++){
                 int idx2 = j+1;
                 System.out.println(idx2 + ". " + listKamar.get(i).get(j));
             }
             System.out.println();
-            System.out.println("Status: " + (isTerisi.get(i) == true ? "Terisi" : "Belum terisi"));
+            System.out.println(" Status: " + (isTerisi.get(i) == true ? "Terisi" : "Belum terisi"));
             if(isTerisi.get(i) ==false)continue;
 
-            System.out.println("Penghuni:");
+            System.out.println(" Penghuni:");
             for(int j = 0;j<listPenghuni.get(i).size();j++){
                 int idx2 = j+1;
                 System.out.println(idx2 + ". " + listPenghuni.get(i).get(j));
             }
+            System.out.println("╚══════════════════════════════════════╝");
         }
     }
 
@@ -119,61 +122,61 @@ public class Main{
     }
 
     public static void tambahPenghuni(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nomorKamar = new Utils().ScanInt();
-        System.out.print("Masukkan nama penghuni: ");
+        System.out.print("- Masukkan nama penghuni: ");
         String namaPenghuni = new Utils().ScanString(100);
 
         if(kamar.addPenghuni(nomorKamar, namaPenghuni) == false){
-            System.out.println("Input tidak valid. (nomor kamar tidak ada)");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m. (nomor kamar tidak ada)");
         }
     }
 
     public static void tambahFasilitas(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nomorKamar = new Utils().ScanInt();
-        System.out.print("Masukkan nama fasilitas: ");
+        System.out.print("- Masukkan nama fasilitas: ");
         String namaFasilitas = new Utils().ScanString(1000);
 
         if(kamar.addFasilitas(nomorKamar, namaFasilitas) == false){
-            System.out.println("Input tidak valid. (nomor kamar tidak ada)");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m. (nomor kamar tidak ada)");
         }else{
             System.out.printf("Sukses menambahkan fasilitas %s pada kamar nomor-%d\n", namaFasilitas,nomorKamar);
         }
     }
 
     public static void aturHarga(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nomorKamar = new Utils().ScanInt();
-        System.out.print("Masukkan harga baru: ");
+        System.out.print("- Masukkan harga baru: ");
         String harga = new Utils().ScanString(100);
 
         if(kamar.setHarga(nomorKamar, harga) == false){
-            System.out.println("Input tidak valid. (nomor kamar tidak ada / harga tidak valid)");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m. (nomor kamar tidak ada / harga tidak valid)");
         }else {
             System.out.printf("Sukses mengubah harga kamar nomor-%d menjadi %s harga\n", nomorKamar, harga);
         }
     }
 
     public static void hapusKamar(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nomorKamar = new Utils().ScanInt();
 
         if(kamar.removeKamar(nomorKamar) == false){
-            System.out.println("Input tidak valid. (nomor kamar tidak ada)");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m. (nomor kamar tidak ada)");
         }else{
             System.out.printf("Sukses menghapus kamar nomor-%d\n", nomorKamar);
         }
     }
 
     public static void hapusPenghuni(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nomorKamar = new Utils().ScanInt();
-        System.out.print("Masukkan nomor penghuni: ");
+        System.out.print("- Masukkan nomor penghuni: ");
         int nomorPenghuni = new Utils().ScanInt();
 
         if(kamar.removePenghuni(nomorKamar, nomorPenghuni) == false){
-            System.out.println("Input tidak valid. (nomor kamar tidak ada / nomor penghuni tidak ada)");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m. (nomor kamar tidak ada / nomor penghuni tidak ada)");
         }else{
             System.out.printf("Sukses menghapus penghuni nomor-%d pada kamar nomor-%d\n", nomorPenghuni, nomorKamar);
         }
@@ -186,29 +189,29 @@ public class Main{
     }
 
     public static void tambahRiwayatPembayaran(){
-        System.out.print("Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar: ");
         int nmkamar = new Utils().ScanInt();
 
-        System.out.print("Masukkan nama penghuni: ");
+        System.out.print("- Masukkan nama penghuni: ");
         String namapenghuni = new Utils().ScanString(1000);
 
-        System.out.print("Masukkan tanggal: ");
+        System.out.print("- Masukkan tanggal: ");
         int tanggal = new Utils().ScanInt();
 
-        System.out.print("Masukkan bulan (angka): ");
+        System.out.print("- Masukkan bulan (angka): ");
         int bulan = new Utils().ScanInt();
 
-        System.out.print("Masukkan tahun: ");
+        System.out.print("- Masukkan tahun: ");
         int tahun = new Utils().ScanInt();
 
-        System.out.print("Masukkan jumlah pembayaran: ");
+        System.out.print("- Masukkan jumlah pembayaran: ");
         int jumlah = new Utils().ScanInt();
 
-        System.out.print("Status (LUNAS/BELUM LUNAS): ");
+        System.out.print("- Status (LUNAS/BELUM LUNAS): ");
         String lunas = new Utils().ScanString(100);
 
         if(namapenghuni == null || lunas == null || nmkamar == -1 || tanggal == -1 || bulan == -1 || tahun == -1 || jumlah == -1){
-            System.out.println("input tidak valid");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m");
             return;
         }
 
@@ -219,7 +222,7 @@ public class Main{
         System.out.print("Masukkan nomor riwayat pembayaran: ");
         int n = new Utils().ScanInt();
         if(n <= 0 || n+1 > pembayaran.size()){
-            System.out.println("Nomor tidak valid");
+            System.out.println("\u001B[31mInput tidak valid\u001B[0m");
             return;
         }
         pembayaran.remove(n-1);

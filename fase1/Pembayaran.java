@@ -13,13 +13,13 @@ public class Pembayaran {
     
     public Pembayaran(int kamar, String penghuni,int tanggal, int bulan, int tahun, int jumlah, String lunas){
         if(bulan <= 0 || bulan > 12) {
-            throw new IllegalArgumentException("Bulan harus 1-12!");
+            throw new IllegalArgumentException("\u001B[33mBulan harus 1-12!\u001B[0m");
         }
         if(tanggal <= 0 || tanggal > 31){
-            throw new IllegalArgumentException("Tanggal harus antara 1-31!");
+            throw new IllegalArgumentException("\u001B[33mTanggal harus antara 1-31!\u001B[0m");
         }
         if(tahun <= 2020 || tahun > 2026){
-            throw new IllegalArgumentException("Tahun harus antara 2021-2026");
+            throw new IllegalArgumentException("\u001B[33mTahun harus antara 2021-2026\u001B[0m");
         }
         if((lunas.equals("LUNAS") == false && lunas.equals("BELUM LUNAS") == false) || lunas == null){
             throw new IllegalArgumentException("KETIK: LUNAS atau BELUM LUNAS");
@@ -34,12 +34,15 @@ public class Pembayaran {
     }
 
     public void tampilkanData(){
-        System.out.println("============================");
-        System.out.println("Kamar no. " + kamar);
-        System.out.println("Penghuni: " + penghuni);
-        System.out.println("Tanggal: " + tanggal + '-' + cvbulan(bulan) + '-' + tahun);
-        System.out.println("Jumlah: " + rp.format(jumlah));
-        System.out.println("Status: " + (lunas ? "Lunas" : "Belum lunas"));
+        System.out.println("\u001B[36m╔════════════════════════════════════╗\u001B[0m");
+        System.out.println("\u001B[36m║         DATA PEMBAYARAN KOST       ║\u001B[0m");
+        System.out.println("\u001B[36m╠════════════════════════════════════╣\u001B[0m");
+        System.out.println("║ Kamar     : Kamar no. " + kamar);
+        System.out.println("║ Penghuni: " + penghuni);
+        System.out.println("║ Tanggal: " + tanggal + '-' + cvbulan(bulan) + '-' + tahun);
+        System.out.println("║ Jumlah: " + rp.format(jumlah));
+        System.out.println("║ Status: " + (lunas ? "Lunas" : "Belum lunas"));
+        System.out.println("\u001B[36m╚════════════════════════════════════╝\u001B[0m");
     }
     
     private String cvbulan(int n){
