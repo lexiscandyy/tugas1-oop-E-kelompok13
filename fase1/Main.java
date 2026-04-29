@@ -36,9 +36,12 @@ public class Main{
                 "║ 8. Kembali                           ║\n" +
                 "╚══════════════════════════════════════╝",
 
-                "Manajemen pembayaran\n" +
-                        "1. Riwayat pembayaran penghuni\n" +
-                        "2. Kembali"
+                "╔══════════════════════════════════════╗\n" +
+                "║         MANAJEMEN PEMBAYARAN         ║\n" +
+                "╠══════════════════════════════════════╣\n" +
+                "║  1. Riwayat pembayaran penghuni      ║\n" +
+                "║  2. Kembali                          ║\n" +
+                "╚══════════════════════════════════════╝",
         };
 
         while (true) {
