@@ -5,6 +5,12 @@ import java.time.LocalDate;
 import java.util.*;
 import java.io.*;
 // main -> kamar -> penghuni -> riwayat pembayaran
+
+/**
+ * Class main
+ * @Author Rama
+ * @Author Andika
+ */
 public class Main{
     static ArrayList<Kamar> kamar;
 

@@ -4,6 +4,11 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Locale;
 
+/**
+ * Class untuk entitas pembayaran, yang terdiri dari nomor kamar, nama penghuni, tanggal, bulan, tahun, jumlah harga, dan status lunas.
+ * @author Rama
+ * @author Andika
+ */
 public class Pembayaran implements Serializable {
     private int kamar;
     private String penghuni;
@@ -13,7 +18,17 @@ public class Pembayaran implements Serializable {
     private int jumlah;
     private boolean lunas;
     NumberFormat rp = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
-    
+
+    /**
+     * Constructor untuk Pembayaran
+     * @param kamar Nomor kamar
+     * @param penghuni Nama penghuni
+     * @param tanggal Tanggal dibayar
+     * @param bulan Bulan
+     * @param tahun Tahun
+     * @param jumlah Jumlah bulan dibayarkan
+     * @param lunas Status lunas
+     */
     public Pembayaran(int kamar, String penghuni,int tanggal, int bulan, int tahun, int jumlah, String lunas){
         try {
             LocalDate.of(tahun, bulan, tanggal); // otomatis validasi
@@ -35,6 +50,9 @@ public class Pembayaran implements Serializable {
         this.lunas = lunas.equals("LUNAS") ? true : false;
     }
 
+    /**
+     * Menampilkan data dari setiap instance variables.
+     */
     public void tampilkanData(){
         System.out.println("\u001B[36m╔════════════════════════════════════╗\u001B[0m");
         System.out.println("\u001B[36m║         DATA PEMBAYARAN KOST       ║\u001B[0m");
@@ -46,7 +64,12 @@ public class Pembayaran implements Serializable {
         System.out.println("║ Status: " + (lunas ? "Lunas" : "Belum lunas"));
         System.out.println("\u001B[36m╚════════════════════════════════════╝\u001B[0m");
     }
-    
+
+    /**
+     * Convert bulan (dalam bentuk angka) menjadi nama bulan
+     * @param n Bulan 1-12
+     * @return Return string kosong jika tidak case tidak terpenuhi (Tidak mungkin terjadi karena sudah divalidasi di constructor)
+     */
     private String cvbulan(int n){
         switch (n){
             case 1: return "Januari"; 

@@ -1,7 +1,17 @@
 import java.util.Scanner;
 
+/**
+ * Class utils untuk keperluan dasar seperti validasi input, dalam prpoyek ini hanya dibutuhkan validasi input int dan string
+ * @author Rama
+ */
 public class Utils{
 
+    /**
+     * Membaca input String menggunakan Scanner dengan method nextLine dan sudah dibatasi supaya tidak integer overflow
+     * Menggunakan metode pengecekan kode ascii untuk memvalidasi setiap kode ascii pada setiap karakter dalam string yang terbaca
+     * Hanya signed int ( > 0 )
+     * @return Mengembalikan nilai signed integer yang valid atau mengembalikan -1 jika tidak valid
+     */
     public int ScanInt(){
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
@@ -16,6 +26,11 @@ public class Utils{
         return Integer.parseInt(str);
     }
 
+    /**
+     * Membaca input String menggunakan Scanner dengan method nextLine
+     * @param lenLimit Membatasi jumlah karakter yang di input oleh user
+     * @return Mengembalikan nilai String jika memenuhi syarat, mengembalikan null jika sebaliknya
+     */
     public String ScanString(int lenLimit){
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
