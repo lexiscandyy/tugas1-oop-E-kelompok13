@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Penghuni {
+public class Penghuni implements Serializable {
     private String namaPenghuni;
     private String noTelepon;
     private ArrayList<Pembayaran> riwayatPembayaran;

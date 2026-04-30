@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.text.*;
 import java.util.*;
 
-public class Kamar {
+public class Kamar implements Serializable {
     private int nomorKamar;
     private Penghuni penghuni;
     private boolean isTerisi;

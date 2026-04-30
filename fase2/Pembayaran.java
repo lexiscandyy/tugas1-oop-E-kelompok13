@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Locale;
 
-public class Pembayaran {
+public class Pembayaran implements Serializable {
     private int kamar;
     private String penghuni;
     private int bulan;

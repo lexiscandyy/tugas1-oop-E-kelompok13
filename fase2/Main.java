@@ -6,11 +6,14 @@ import java.util.*;
 import java.io.*;
 // main -> kamar -> penghuni -> riwayat pembayaran
 public class Main{
-    public static int cur = 0;
+    static ArrayList<Kamar> kamar;
 
-    static ArrayList<Kamar> kamar = new ArrayList<>();
+    public static int cur = 0;
+//
+//    static ArrayList<Kamar> kamar = new ArrayList<>();
     static NumberFormat rp = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
-    public static void main(String[] arg){
+    static void main(String[] arg) throws IOException {
+        load();
         String[] listMenu = {
                 "╔══════════════════════════════════════╗\n" +
                 "║          SISTEM KOST ADMIN           ║\n" +
@@ -62,7 +65,10 @@ public class Main{
             System.out.println(listMenu[cur]);
             int input = new Utils().ScanInt();
             if(cur == 0) {
-                if (input == 2) return;
+                if (input == 2) {
+                    simpan();
+                    return;
+                }
                 if (input == 1) cur++;
                 else System.out.println("\u001B[31minput tidak valid\u001B[0m");
             }else if(cur == 1){
@@ -368,5 +374,22 @@ public class Main{
             }
         }
         System.out.println("NOMOR KAMAR TIDAK DITEMUKAN");
+    }
+
+    public static void load(){
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("data_kamar_kos.dat"));
+            kamar = (ArrayList<Kamar>) in.readObject();
+            in.close();
+        } catch (Exception e) {
+            kamar = new ArrayList<>(); // kalau belum ada file
+        }
+    }
+
+    public static void simpan() throws IOException {
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data_kamar_kos.dat"));
+        out.writeObject(kamar);
+        out.close();
+        System.out.println("DATA DISIMPAN");
     }
 }
