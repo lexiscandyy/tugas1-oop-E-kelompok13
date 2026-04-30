@@ -159,7 +159,7 @@ public class Main{
     }
 
     public static void hapusKamar(){
-        System.out.print("- Masukkan nomor kamar: ");
+        System.out.print("- Masukkan nomor kamar yang ingin dihapus: ");
         int nomorKamar = new Utils().ScanInt();
 
         if(kamar.removeKamar(nomorKamar) == false){
