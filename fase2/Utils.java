@@ -19,6 +19,7 @@ public class Utils{
     public String ScanString(int lenLimit){
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
+        if (str.isEmpty()) return null;
 //        System.out.println(">> tekan enter <<");
 //        sc.nextLine();
         return (str.length() > lenLimit ? null : str);

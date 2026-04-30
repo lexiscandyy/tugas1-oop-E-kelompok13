@@ -59,8 +59,7 @@ public class Pembayaran {
             case 9: return "September"; 
             case 10: return "Oktober"; 
             case 11: return "November"; 
-            case 12: return "Desember"; 
-            //case KONTOLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+            case 12: return "Desember";
         }
         return "";
     }

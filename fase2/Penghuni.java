@@ -4,7 +4,7 @@ import java.util.List;
 public class Penghuni {
     private String namaPenghuni;
     private String noTelepon;
-    private List<Pembayaran> riwayatPembayaran;
+    private ArrayList<Pembayaran> riwayatPembayaran;
 
     public Penghuni(String nama, String noTelepon) {
         this.namaPenghuni = nama;
@@ -13,11 +13,22 @@ public class Penghuni {
     }
 
     public void tambahRiwayat(Pembayaran p) {
-        this.riwayatPembayaran.add(p);
+        riwayatPembayaran.add(p);
     }
 
-    public String getNama() { return namaPenghuni; }
-    public List<Pembayaran> getRiwayatPembayaran() { return riwayatPembayaran; }
+    public void setNama(String nama){
+        namaPenghuni = nama;
+    }
+    public void setNoTelp(String nom){
+        noTelepon = nom;
+    }
+
+    public String getNama() {
+        return namaPenghuni;
+    }
+    public ArrayList<Pembayaran> getRiwayatPembayaran() {
+        return riwayatPembayaran;
+    }
 
     @Override
     public String toString() {

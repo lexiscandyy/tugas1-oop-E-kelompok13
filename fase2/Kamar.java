@@ -4,77 +4,57 @@ import java.text.*;
 import java.util.*;
 
 public class Kamar {
-    private ArrayList<ArrayList<String>> listKamar = new ArrayList<>();
-    private ArrayList<ArrayList<String>> listPenghuni = new ArrayList<>();
-    private ArrayList<Boolean> isTerisi = new ArrayList<>();
-    private ArrayList<String> listHarga = new ArrayList<>();
+    private int nomorKamar;
+    private Penghuni penghuni;
+    private boolean isTerisi;
+    private int harga;
+    private ArrayList<String> fasilitas = new ArrayList<>();
 
-    NumberFormat rp = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    public Kamar(int nomorKamar, int harga){
+        if(nomorKamar<=0) throw new IllegalArgumentException("Nomor kamar tidak valid");
+        this.nomorKamar = nomorKamar;
+        this.harga = harga;
+        this.penghuni = new Penghuni("BELUM ADA PENGHUNI", "-");
+        this.isTerisi = false;
+    }
 
-    public ArrayList<ArrayList<String>> getKamar(){
-        return listKamar;
+    public void addFasilitas(String namaFasilitas){
+        fasilitas.add(namaFasilitas);
     }
-    public ArrayList<ArrayList<String>> getPenghuni(){
-        return listPenghuni;
+
+    // SETTER
+
+    public void setPenghuni(String nama, String notelp){
+        this.isTerisi = true;
+        penghuni.setNama(nama);
+        penghuni.setNoTelp(notelp);
     }
-    public ArrayList<Boolean> getIsTerisi(){
+
+    public void setHarga(int n){
+        if(n <= 0) throw new IllegalArgumentException("Harga tidak valid");
+        if(n < 500000 || n > 5e6) throw new IllegalArgumentException("HARGA TIDAK MASUK AKAL");
+        this.harga = n;
+    }
+
+    public void setIsTerisi(boolean cek){
+        this.isTerisi = cek;
+    }
+
+    // GETTER
+    public ArrayList<String> getFasilitas(){
+        return fasilitas;
+    }
+
+    public int getNomorKamar(){
+        return nomorKamar;
+    }
+    public Penghuni getPenghuni(){
+        return penghuni;
+    }
+    public boolean getIsTerisi(){
         return isTerisi;
     }
-    public ArrayList<String> getHarga(){
-        return listHarga;
-    }
-
-    public void addKamar(){
-        listKamar.add(new ArrayList<>());
-        listPenghuni.add(new ArrayList<>());
-        listHarga.add("Harga belum di set");
-        isTerisi.add(false);
-    }
-
-    public Boolean removeKamar(int nomorKamar){
-        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
-        listKamar.remove(nomorKamar-1);
-        listPenghuni.remove(nomorKamar-1);
-        isTerisi.remove(nomorKamar-1);
-        listHarga.remove(nomorKamar-1);
-        return true;
-    }
-
-    public Boolean addPenghuni(int nomorKamar, String namaPenghuni){
-        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
-        if(namaPenghuni == null) return false;
-        listPenghuni.get(nomorKamar-1).add(namaPenghuni);
-
-        isTerisi.set(nomorKamar-1, true);
-
-        return true;
-    }
-
-    public Boolean removePenghuni(int nomorKamar, int nomorPenghuni){
-        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
-        if(nomorPenghuni <= 0 || nomorPenghuni > listPenghuni.get(nomorKamar-1).size()) return false;
-        listPenghuni.get(nomorKamar-1).remove(nomorPenghuni-1);
-
-        if(listPenghuni.get(nomorKamar-1).size() == 0) isTerisi.set(nomorKamar-1, false);
-
-        return true;
-    }
-
-    public Boolean setHarga(int nomorKamar, String harga){
-        if(harga.length() >= 9) return false;
-        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
-        for(int i = 0 ;i < harga.length();i++){
-            if(harga.charAt(i) < '0' || harga.charAt(i) > '9') return false;
-        }
-        if(harga == null) return false;
-        listHarga.set(nomorKamar-1, rp.format(Integer.parseInt(harga)));
-        return true;
-    }
-
-    public Boolean addFasilitas(int nomorKamar, String namaFasilitas){
-        if(nomorKamar <= 0 || nomorKamar > listKamar.size()) return false;
-        if(namaFasilitas == null) return false;
-        listKamar.get(nomorKamar-1).add(namaFasilitas);
-        return true;
+    public int getHarga(){
+        return harga;
     }
 }
