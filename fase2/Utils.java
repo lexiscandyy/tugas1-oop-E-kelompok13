@@ -9,8 +9,8 @@ public class Utils{
     /**
      * Membaca input String menggunakan Scanner dengan method nextLine dan sudah dibatasi supaya tidak integer overflow
      * Menggunakan metode pengecekan kode ascii untuk memvalidasi setiap kode ascii pada setiap karakter dalam string yang terbaca
-     * Hanya signed int ( > 0 )
-     * @return Mengembalikan nilai signed integer yang valid atau mengembalikan -1 jika tidak valid
+     * Hanya unsigned int ( > 0 )
+     * @return Mengembalikan nilai unsigned integer yang valid atau mengembalikan -1 jika tidak valid
      */
     public int ScanInt(){
         Scanner sc = new Scanner(System.in);
