@@ -342,6 +342,11 @@ public class Main{
             return;
         }
 
+        if(jumlah >= 12){ // takutnya integer overflow
+            System.out.println("MAX 12 BULAN");
+            return;
+        }
+
         int TOTAL = jumlah * kamar.get(idxkamar).getHarga();
 
         Pembayaran newPembayaran = new Pembayaran(nomorKamar, kamar.get(idxkamar).getPenghuni().getNama(), tanggal, bulan, tahun, TOTAL, lunas);
