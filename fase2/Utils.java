@@ -22,7 +22,7 @@ public class Utils{
             if(str.charAt(i) < '0' || str.charAt(i) > '9') return -1;
         }
 
-        if(str.length() > 10) return -1;
+        if(str.length() >= 9) return -1;
         return Integer.parseInt(str);
     }
 
